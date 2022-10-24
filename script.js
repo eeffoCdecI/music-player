@@ -125,7 +125,6 @@ const app = {
             } else _this.currentIndex = _this.getRandomIndex();
             if (_this.isRepeat) {
                 audio.loop = true;
-                console.log(audio.loop);
             } else {
                 audio.loop = false;
                 _this.loadCurrentTrack();
