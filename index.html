@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./assets/style.css" />
+        <script src="./script.js" defer></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <title>Generic Music Player</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1 class="heading">Music name</h1>
+            <h3 class="artist">Artist</h3>
+            <img src="" alt="album artwork" class="artwork" />
+            <div class="time">
+                <p class="current-time"></p>
+                <div class="input-range">
+                    <input
+                        type="range"
+                        name="timestamp"
+                        id="timestamp"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="0"
+                    />
+                </div>
+                <p class="duration-time"></p>
+            </div>
+            <div class="control-buttons">
+                <button class="btn shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button class="btn previous">
+                    <i class="fa-solid fa-backward"></i>
+                </button>
+                <button class="btn play-pause">
+                    <i class="play-pause-icon fa-solid fa-play"></i>
+                </button>
+                <button class="btn next">
+                    <i class="fa-solid fa-forward"></i>
+                </button>
+                <button class="btn repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+            <div class="nextSession">
+                <p class="nextTrack"></p>
+            </div>
+            <audio src="" preload="metadata"></audio>
+        </div>
+    </body>
+</html>
