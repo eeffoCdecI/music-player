@@ -5,7 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./assets/style.css" />
-        <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/461/461146.png" type="image/x-icon">
+        <link
+            rel="shortcut icon"
+            href="https://cdn-icons-png.flaticon.com/512/461/461146.png"
+            type="image/x-icon"
+        />
         <script src="./script.js" defer></script>
         <link
             rel="stylesheet"
@@ -17,46 +21,51 @@
         <title>Generic Music Player</title>
     </head>
     <body>
-        <div class="wrapper">
-            <h1 class="heading">Music name</h1>
-            <h3 class="artist">Artist</h3>
-            <img src="" alt="album artwork" class="artwork" />
-            <div class="time">
-                <p class="current-time"></p>
-                <div class="input-range">
-                    <input
-                        type="range"
-                        name="timestamp"
-                        id="timestamp"
-                        min="0"
-                        max="100"
-                        step="1"
-                        value="0"
-                    />
+        <div class="container">
+            <div class="wrapper">
+                <h1 class="heading">Music name</h1>
+                <h3 class="artist">Artist</h3>
+                <img src="" alt="album artwork" class="artwork" />
+                <div class="time">
+                    <p class="current-time"></p>
+                    <div class="input-range">
+                        <input
+                            type="range"
+                            name="timestamp"
+                            id="timestamp"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value="0"
+                        />
+                    </div>
+                    <p class="duration-time"></p>
                 </div>
-                <p class="duration-time"></p>
+                <div class="control-buttons">
+                    <button class="btn shuffle">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                    <button class="btn previous">
+                        <i class="fa-solid fa-backward"></i>
+                    </button>
+                    <button class="btn play-pause">
+                        <i class="play-pause-icon fa-solid fa-play"></i>
+                    </button>
+                    <button class="btn next">
+                        <i class="fa-solid fa-forward"></i>
+                    </button>
+                    <button class="btn repeat">
+                        <i class="fa-solid fa-repeat"></i>
+                    </button>
+                </div>
+                <div class="nextSession">
+                    <p class="nextTrack"></p>
+                </div>
+                <audio src="" preload="metadata"></audio>
             </div>
-            <div class="control-buttons">
-                <button class="btn shuffle">
-                    <i class="fa-solid fa-shuffle"></i>
-                </button>
-                <button class="btn previous">
-                    <i class="fa-solid fa-backward"></i>
-                </button>
-                <button class="btn play-pause">
-                    <i class="play-pause-icon fa-solid fa-play"></i>
-                </button>
-                <button class="btn next">
-                    <i class="fa-solid fa-forward"></i>
-                </button>
-                <button class="btn repeat">
-                    <i class="fa-solid fa-repeat"></i>
-                </button>
+            <div class="track-list">
+                <ul class="track-ul"></ul>
             </div>
-            <div class="nextSession">
-                <p class="nextTrack"></p>
-            </div>
-            <audio src="" preload="metadata"></audio>
         </div>
     </body>
 </html>

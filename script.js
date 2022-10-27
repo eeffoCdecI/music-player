@@ -19,6 +19,8 @@ const repeatBtn = document.querySelector(".repeat");
 const currentTimeEl = document.querySelector(".current-time");
 const durationTimeEl = document.querySelector(".duration-time");
 
+const trackLiEl = document.querySelector(".track-ul");
+
 const app = {
     currentIndex: 0,
     isPlaying: false,
@@ -50,7 +52,8 @@ const app = {
             id: 4,
             trackName: "Sweet but Psycho (BEAUZ Remix)",
             trackArtist: "Ava Max",
-            trackPath: "./assets/music/Ava Max - Sweet but Psycho (BEAUZ Remix).mp3",
+            trackPath:
+                "./assets/music/Ava Max - Sweet but Psycho (BEAUZ Remix).mp3",
             trackAlbumArt: "./assets/imgs/sweet-but-psycho-beauz-remix.jpg",
         },
         {
@@ -82,6 +85,24 @@ const app = {
         artist.textContent = this.currentTrack.trackArtist;
         audio.src = this.currentTrack.trackPath;
         img.src = this.currentTrack.trackAlbumArt;
+    },
+
+    loadTrackList: function () {
+        const trackLiTemplate = this.tracks.map(
+            (track) => `<li>
+        <div class="track" id="track-no-${track.id}">
+            <div class="track-artwork flex-center-all">
+                <img src="${track.trackAlbumArt}" alt="track-artwork" />
+            </div>
+            <div class="track-info flex-center-all">
+                <h3 class="track-heading">${track.trackName}</h3>
+                <h4 class="track-artist">${track.trackArtist}</h4>
+            </div>
+        </div>
+    </li>`
+        );
+        trackLiEl.innerHTML = trackLiTemplate.join("");
+        this.handleClickTrackNodes();
     },
 
     updateIconToPause: function () {
@@ -128,7 +149,7 @@ const app = {
             } else {
                 audio.loop = false;
                 _this.loadCurrentTrack();
-                _this.playTrack(); 
+                _this.playTrack();
                 _this.updateNextTrack();
             }
         };
@@ -144,7 +165,7 @@ const app = {
                 }
             }
         },
-        
+
         repeatBtn.onclick = function () {
             _this.isRepeat = !_this.isRepeat;
             if (_this.isRepeat) {
@@ -159,7 +180,9 @@ const app = {
                     Math.floor((audio.currentTime / audio.duration) * 100)
                 );
             }
-            currentTimeEl.textContent = _this.formatTimestamp(audio.currentTime);
+            currentTimeEl.textContent = _this.formatTimestamp(
+                audio.currentTime
+            );
             if (audio.ended) {
                 if (_this.currentIndex >= tracksLength - 1) {
                     _this.currentIndex = 0;
@@ -193,7 +216,7 @@ const app = {
         };
 
         timestamp.oninput = function () {
-            audio.currentTime = timestamp.value * audio.duration / 100;
+            audio.currentTime = (timestamp.value * audio.duration) / 100;
         };
     },
 
@@ -246,9 +269,28 @@ const app = {
         }
     },
 
+    handleClickTrackNodes: function () {
+        const _this = this;
+        const trackEls = document.querySelectorAll(".track");
+        trackEls.forEach((track) => {
+            track.onclick = function () {
+                const id = parseInt(this.id.replace("track-no-", ""));
+                console.log(id, typeof id);
+                _this.playSelectedTrack(id);
+            };
+        });
+    },
+
+    playSelectedTrack: function (id) {
+        this.currentIndex = id - 1;
+        this.loadCurrentTrack();
+        this.playTrack();
+    },
+
     start: function () {
         this.defineObjectProperties();
         this.loadCurrentTrack();
+        this.loadTrackList();
         this.updateNextTrack();
         this.handleEvents();
         this.getTrackDurationAndRenderToView();
