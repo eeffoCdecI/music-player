@@ -275,7 +275,6 @@ const app = {
         trackEls.forEach((track) => {
             track.onclick = function () {
                 const id = parseInt(this.id.replace("track-no-", ""));
-                console.log(id, typeof id);
                 _this.playSelectedTrack(id);
             };
         });

@@ -41,6 +41,7 @@ li {
 
 .track-list {
     width: 300px;
+    margin-inline: 10px;
     border: 1px solid black;
     border-radius: 5px;
     overflow: hidden;
@@ -114,21 +115,20 @@ li {
 }
 
 @media (max-width: 500px) {
-    body {
-        height: min-content;
-    }
     .wrapper {
         width: 100%;
     }
 
     .container {
+        height: 100%;
         flex-direction: column;
     }
 
     .track-list {
+        flex-grow: 1;
         width: 95%;
-        height: 500px;
-        margin: 10px auto 0;
+        height: 100%;
+        margin: 10px auto;
         overflow: auto;
     }
 }
